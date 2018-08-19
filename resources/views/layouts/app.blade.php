@@ -35,6 +35,7 @@
                         @guest
                             <li class="nav-item"><a href="javascript:void()" class="nav-link">产品</a></li>
                             <li class="nav-item"><a href="javascript:void()" class="nav-link">价格</a></li>
+                            <li class="nav-item"><a href="javascript:void()" class="nav-link">模板</a></li>
                         @else
                             <li class="nav-item"><a href="javascript:void()" class="nav-link">目录</a></li>
                             <li class="nav-item"><a href="javascript:void()" class="nav-link">相册</a></li>
@@ -71,7 +72,7 @@
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a href="#" class="dropdown-item"><i class="iconfont">&#xe608;</i> 账号设置</a>
-                                    <a href="#" class="dropdown-item"><i class="iconfont">&#xe607;</i> 个人信息</a>
+                                    <a href="#" class="dropdown-item"><i class="iconfont">&#xe607;</i> 个人简介</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
