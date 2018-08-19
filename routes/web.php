@@ -26,3 +26,5 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth'], function () {
     Route::get('info', 'UserController@info');
     Route::post('setavatar', 'UserController@setAvatar');
 });
+
+Route::get('test', 'HomeController@test');
