@@ -30,7 +30,7 @@ class HomeController extends Controller
     public function test(){
         $sms = App::make('sms');
         $data = $sms->send(13188888888, [
-            'content'  => '您的验证码为: 6379',
+            'content'  => 'your verify code is: 6379',
             'template' => 'SMS_001',
             'data' => [
                 'code' => 6379

@@ -10,7 +10,7 @@ return [
         'strategy' => \Overtrue\EasySms\Strategies\OrderStrategy::class,
 
         // 默认可用的发送网关
-        'gateways' => env('APP_DEBUG') === true? ['smsfilegateway']: [
+        'gateways' => env('APP_DEBUG') === true? ['smstoastgateway']: [
             'yunpian', 'aliyun',
         ],
     ],
@@ -28,5 +28,8 @@ return [
             'sign_name' => '',
         ],
         //...
+        'smstoastgateway' => [
+            'api' => 'http://192.168.1.123:9504/toast'
+        ]
     ],
 ];
