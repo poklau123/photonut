@@ -44,6 +44,10 @@ class SmsToastGateway extends Gateway
                 'phone' => $item->getNumber(),
                 'verifycode' => $message->getContent()
             ]);
+            Log::info([
+                'phone' => $item->getNumber(),
+                'verifycode' => $message->getContent()
+            ]);
             if($result['code'] !== 0){
                 Log::info($result);
                 throw new GatewayErrorException($item, $result['code'], $result);

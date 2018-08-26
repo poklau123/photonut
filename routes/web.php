@@ -27,4 +27,11 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth'], function () {
     Route::post('setavatar', 'UserController@setAvatar');
 });
 
-Route::get('test', 'HomeController@test');
+Route::post('/auth/code', 'Auth\SmsController@requestCode')->name('/auth/code');
+Route::get('/auth/password', 'Auth\InfoController@password')->name('/auth/password');
+Route::post('/auth/password', 'Auth\InfoController@setpassword')->name('/auth/setpassword');
+
+Route::get('test/{id}', function($id){
+    Auth::loginUsingId($id);
+    return redirect('/home');
+});

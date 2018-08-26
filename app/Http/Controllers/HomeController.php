@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App;
+use SMS;
+use Cache;
 
 class HomeController extends Controller
 {
@@ -28,15 +29,7 @@ class HomeController extends Controller
     }
 
     public function test(){
-        $sms = App::make('sms');
-        $data = $sms->send(13188888888, [
-            'content'  => 'your verify code is: 6379',
-            'template' => 'SMS_001',
-            'data' => [
-                'code' => 6379
-            ]
-        ]);
-
-        return $data;
+        $code = \App\Services\PhoneVerifyService::get('18271681956');
+        dd($code);
     }
 }

@@ -12,52 +12,39 @@
                         @csrf
 
                         <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">用户名</label>
+                            <label for="phone" class="col-md-4 col-form-label text-md-right">手机号</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
+                                <input id="phone" type="phone" class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" name="phone" value="{{ old('phone') }}" required>
 
-                                @if ($errors->has('name'))
+                                @if ($errors->has('phone'))
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('name') }}</strong>
+                                        <strong>{{ $errors->first('phone') }}</strong>
                                     </span>
                                 @endif
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">邮箱</label>
+                            <label for="code" class="col-md-4 col-form-label text-md-right">验证码</label>
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>
-
-                                @if ($errors->has('email'))
+                            <div class="col-md-4">
+                                <input id="code" type="code" class="form-control{{ $errors->has('code') ? ' is-invalid' : '' }}" name="code" required>
+                                @if ($errors->has('code'))
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('email') }}</strong>
+                                        <strong>{{ $errors->first('code') }}</strong>
                                     </span>
                                 @endif
                             </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">密码</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
-
-                                @if ($errors->has('password'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">确认密码</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+                            <div class="col-md-4">
+                                @php
+                                    $wait_time = session()->get('wait_time')    
+                                @endphp
+                                @if(is_null($wait_time))
+                                    <button type="button" class="btn btn-primary" id="btn_code">获取验证码</button>
+                                @else
+                                    <button type="button" class="btn btn-primary redo" id="btn_code" data-time="{{ $wait_time }}" disabled>{{ "重新发送($wait_time)" }}</button>
+                                @endif                               
                             </div>
                         </div>
 
@@ -68,6 +55,11 @@
                                 </button>
                             </div>
                         </div>
+                    </form>
+
+                    <form id="verify-form" action="{{ route('/auth/code') }}" method="POST" style="display: none;">
+                        @csrf
+                        <input type="text" name="phone">    
                     </form>
                 </div>
             </div>

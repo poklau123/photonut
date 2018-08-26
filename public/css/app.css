@@ -10489,7 +10489,6 @@ a.text-dark:focus {
 
 .navbar-laravel {
   background-color: #43423F;
-  height: 90px;
   -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
           box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
@@ -10497,7 +10496,7 @@ a.text-dark:focus {
 .navbar-laravel .navbar-brand {
   display: inline-block;
   width: 200px;
-  height: 52px;
+  height: 40px;
   background: url("/images/logo.png") no-repeat;
   background-size: auto 100%;
 }
@@ -10508,7 +10507,7 @@ a.text-dark:focus {
 
 .navbar-laravel .navbar-nav.mr-auto .nav-item.site-view,
 .navbar-laravel .navbar-nav.ml-auto .nav-item.site-view {
-  height: 62px;
+  height: 45px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -10554,14 +10553,20 @@ a.text-dark:focus {
 .navbar-laravel .navbar-nav.ml-auto .nav-item a .navbar-name-avatar {
   display: inline-block;
   border-radius: 50%;
-  width: 52px;
-  height: 52px;
+  width: 30px;
+  height: 30px;
   border: 1px solid #f1f1f1;
   margin-right: 10px;
-  line-height: 52px;
+  line-height: 50px;
   text-align: center;
   background-color: lightblue;
   color: black;
+  overflow: hidden;
+}
+
+.navbar-laravel .navbar-nav.mr-auto .nav-item a .name,
+.navbar-laravel .navbar-nav.ml-auto .nav-item a .name {
+  line-height: 50px;
 }
 
 .navbar-laravel .navbar-nav.mr-auto .nav-item .dropdown-item,
