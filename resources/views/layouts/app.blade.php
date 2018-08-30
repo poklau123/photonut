@@ -37,9 +37,9 @@
                             <li class="nav-item"><a href="javascript:void()" class="nav-link">价格</a></li>
                             <li class="nav-item"><a href="javascript:void()" class="nav-link">模板</a></li>
                         @else
-                            <li class="nav-item"><a href="javascript:void()" class="nav-link">目录</a></li>
                             <li class="nav-item"><a href="javascript:void()" class="nav-link">相册</a></li>
                             <li class="nav-item"><a href="javascript:void()" class="nav-link">模板</a></li>
+                            <li class="nav-item"><a href="javascript:void()" class="nav-link">联系</a></li>
                         @endguest
                     </ul>
 
@@ -65,9 +65,9 @@
                                     @if(Auth::user()->avatar)
                                         <img class="navbar-avatar" src="{{ asset('storage/'.config('image.avatar.save_path').Auth::user()->id.'.'.config('image.avatar.save_format')) }}" alt="{{ Auth::user()->name }}">
                                     @else
-                                        <span class="navbar-name-avatar">{{ Auth::user()->name }}</span>
+                                        <span class="navbar-name-avatar">{{ substr(Auth::user()->name, -2) }}</span>
                                     @endif
-                                    <span class="name">{{ Auth::user()->name }} <span class="caret"></span></span>
+                                    {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
