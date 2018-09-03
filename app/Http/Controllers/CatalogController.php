@@ -99,8 +99,23 @@ class CatalogController extends Controller
             'move_down' => '下移操作'
         ]);
 
-        $catalog->name = $request->name;
-        $catalog->save();
+        if($request->name){
+            $catalog->name = $request->name;
+            $catalog->save();
+        }else{
+            if($request->move_up){
+                if($catalog->sort > 0){
+                    $catalog->sort -= 1;
+                    Auth::user()->catalogs()->where('sort', $catalog->sort)->increment('sort', 1);
+                }
+            }else if($request->move_down){
+                if($catalog->sort < Auth::user()->catalogs()->max('sort')){
+                    $catalog->sort += 1;
+                    Auth::user()->catalogs()->where('sort', $catalog->sort)->decrement('sort', 1);
+                }
+            }
+            $catalog->save();
+        }
 
         return $catalog;
     }

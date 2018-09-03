@@ -10,15 +10,13 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Scripts -->
-    <script src="{{ mix('js/app.js') }}" defer></script>
-
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
 
     <!-- Styles -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+    @yield('style')
 </head>
 <body>
     <div id="app">
@@ -37,7 +35,7 @@
                             <li class="nav-item"><a href="javascript:void()" class="nav-link">价格</a></li>
                             <li class="nav-item"><a href="javascript:void()" class="nav-link">模板</a></li>
                         @else
-                            <li class="nav-item"><a href="javascript:void()" class="nav-link">相册</a></li>
+                            <li class="nav-item"><a href="/album" class="nav-link">相册</a></li>
                             <li class="nav-item"><a href="javascript:void()" class="nav-link">模板</a></li>
                             <li class="nav-item"><a href="javascript:void()" class="nav-link">联系</a></li>
                         @endguest
@@ -94,5 +92,8 @@
             @yield('content')
         </main>
     </div>
+    <!-- Scripts -->
+    <script src="{{ mix('js/app.js') }}"></script>
+    @yield('script')
 </body>
 </html>
