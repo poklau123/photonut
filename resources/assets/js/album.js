@@ -36,6 +36,37 @@
         });
     });
 
+    $('body').on('click', '.album .edit', function(e){
+        var album = $(e.target).parents('.album');
+        var id = album.data('id');
+        var name = album.find('.name').text();
+        $('#album-modal').attr('data-id', id);
+        $('#album-modal').find('input').val(name);
+        $('#album-modal').modal('show');
+    });
+
+    $('#album-modal').on('hidden.bs.modal', function(){
+        $(this).attr('data-id', undefined);
+        $(this).find('.name').val('');
+    });
+
+    $('#album-submit').click(function(){
+        var album = $(this).parents('div.modal');
+        var id = album.data('id');
+        var name = album.find('input').val();
+        if(id){
+            axios.put('/catalog/'+id, {name: name}).then(function(response){
+                GetAlbumList(id);
+            });
+        }else{
+            axios.post('/catalog', {name: name}).then(function(response){
+                GetAlbumList(id);
+            });
+        }
+
+        $('#album-modal').modal('hide');
+    });
+
     //构造相册的阅览节点
     function ConstructViewAlbumNode(item){
         var node = album_view_tpl.clone();

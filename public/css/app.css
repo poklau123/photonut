@@ -1,8 +1,8 @@
 @font-face {
   font-family: 'iconfont';
   /* project id 777691 */
-  src: url("//at.alicdn.com/t/font_777691_h36hfekrl3.eot");
-  src: url("//at.alicdn.com/t/font_777691_h36hfekrl3.eot?#iefix") format("embedded-opentype"), url("//at.alicdn.com/t/font_777691_h36hfekrl3.woff") format("woff"), url("//at.alicdn.com/t/font_777691_h36hfekrl3.ttf") format("truetype"), url("//at.alicdn.com/t/font_777691_h36hfekrl3.svg#iconfont") format("svg");
+  src: url("//at.alicdn.com/t/font_777691_uyj3nm6hj8e.eot");
+  src: url("//at.alicdn.com/t/font_777691_uyj3nm6hj8e.eot?#iefix") format("embedded-opentype"), url("//at.alicdn.com/t/font_777691_uyj3nm6hj8e.woff") format("woff"), url("//at.alicdn.com/t/font_777691_uyj3nm6hj8e.ttf") format("truetype"), url("//at.alicdn.com/t/font_777691_uyj3nm6hj8e.svg#iconfont") format("svg");
 }
 
 .iconfont {
@@ -9603,12 +9603,6 @@ a.text-dark:hover, a.text-dark:focus {
 }
 
 .album {
-  height: 50px;
-  line-height: 50px;
-  border: 1px solid lightgray;
-  border-radius: 2px;
-  padding: 0 0 0 8px;
-  margin: 8px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -9617,21 +9611,35 @@ a.text-dark:hover, a.text-dark:focus {
           justify-content: space-between;
 }
 
-.album:hover {
+.album-new {
+  cursor: pointer;
+  background-color: lightgray;
+}
+
+.album, .album-new {
+  height: 50px;
+  line-height: 50px;
+  border: 1px solid lightgray;
+  border-radius: 2px;
+  padding: 0 0 0 8px;
+  margin: 8px;
+}
+
+.album:hover, .album-new:hover {
   -webkit-box-shadow: 1px 1px 8px lightgray;
           box-shadow: 1px 1px 8px lightgray;
 }
 
-.album.active {
+.album.active, .album-new.active {
   border-color: dodgerblue;
 }
 
-.album.active:hover {
+.album.active:hover, .album-new.active:hover {
   -webkit-box-shadow: 1px 1px 8px dodgerblue;
           box-shadow: 1px 1px 8px dodgerblue;
 }
 
-.album.active .op {
+.album.active .op, .album-new.active .op {
   visibility: visible;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -9639,19 +9647,19 @@ a.text-dark:hover, a.text-dark:focus {
   color: #7c7c7c;
 }
 
-.album.active .op i {
+.album.active .op i, .album-new.active .op i {
   cursor: pointer;
 }
 
-.album.active .op i:hover {
+.album.active .op i:hover, .album-new.active .op i:hover {
   color: dodgerblue;
 }
 
-.album.active .op .move {
+.album.active .op .move, .album-new.active .op .move {
   width: 24px;
 }
 
-.album.active .op .move div {
+.album.active .op .move div, .album-new.active .op .move div {
   line-height: 24px;
   height: 50%;
   width: 100%;
@@ -9659,14 +9667,14 @@ a.text-dark:hover, a.text-dark:focus {
   border-left: 1px solid dodgerblue;
 }
 
-.album.active .op .move div.up {
+.album.active .op .move div.up, .album-new.active .op .move div.up {
   border-bottom: 1px solid dodgerblue;
 }
 
-.album .name {
+.album .name, .album-new .name {
   cursor: default;
 }
 
-.album .op {
+.album .op, .album-new .op {
   visibility: hidden;
 }
