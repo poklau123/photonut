@@ -12,15 +12,18 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('post', 'PostController')->middleware('auth');
 Route::resource('catalog', 'CatalogController')->middleware('auth');
+
+Route::group(['prefix' => 'catalog/{catalog_id}', 'middleware' => 'auth'], function () {
+    Route::resource('post', 'PostController');
+});
 
 Route::group(['prefix' => 'user', 'middleware' => 'auth'], function () {
     Route::get('info', 'UserController@info');

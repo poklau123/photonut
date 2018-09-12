@@ -1,8 +1,8 @@
 @font-face {
   font-family: 'iconfont';
   /* project id 777691 */
-  src: url("//at.alicdn.com/t/font_777691_uyj3nm6hj8e.eot");
-  src: url("//at.alicdn.com/t/font_777691_uyj3nm6hj8e.eot?#iefix") format("embedded-opentype"), url("//at.alicdn.com/t/font_777691_uyj3nm6hj8e.woff") format("woff"), url("//at.alicdn.com/t/font_777691_uyj3nm6hj8e.ttf") format("truetype"), url("//at.alicdn.com/t/font_777691_uyj3nm6hj8e.svg#iconfont") format("svg");
+  src: url("//at.alicdn.com/t/font_777691_h445uu0mv0a.eot");
+  src: url("//at.alicdn.com/t/font_777691_h445uu0mv0a.eot?#iefix") format("embedded-opentype"), url("//at.alicdn.com/t/font_777691_h445uu0mv0a.woff") format("woff"), url("//at.alicdn.com/t/font_777691_h445uu0mv0a.ttf") format("truetype"), url("//at.alicdn.com/t/font_777691_h445uu0mv0a.svg#iconfont") format("svg");
 }
 
 .iconfont {
@@ -9677,4 +9677,13 @@ a.text-dark:hover, a.text-dark:focus {
 
 .album .op, .album-new .op {
   visibility: hidden;
+}
+
+.post {
+  margin-bottom: 16px;
+}
+
+#upload-container {
+  visibility: hidden;
+  margin-bottom: 16px;
 }

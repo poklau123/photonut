@@ -70,7 +70,6 @@
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a href="#" class="dropdown-item"><i class="iconfont">&#xe608;</i> 账号设置</a>
-                                    <a href="#" class="dropdown-item"><i class="iconfont">&#xe607;</i> 个人简介</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

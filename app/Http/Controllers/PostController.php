@@ -15,14 +15,14 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($catalog_id)
     {
         $config_meta_format = config('image.meta.format');
         $config_meta_save_path = config('image.meta.save_path');
         $config_meta_compress_path = config('image.meta.compress_path');
         $config_meta_prefix = config('image.meta.prefix');
 
-        return Auth::user()->posts()->get()->map(function($item) use($config_meta_compress_path, $config_meta_save_path, $config_meta_format, $config_meta_prefix){
+        return Auth::user()->posts()->where('catalog_id', $catalog_id)->get()->map(function($item) use($config_meta_compress_path, $config_meta_save_path, $config_meta_format, $config_meta_prefix){
             $origin_url = asset('storage'.$config_meta_save_path.$item->pic_uid.'.'.$config_meta_format);
             $compress_url = asset('storage'.$config_meta_compress_path.$item->pic_uid.'.'.$config_meta_format);
             return [
@@ -50,7 +50,7 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $catalog_id)
     {
         $request->validate([
             'title' => 'required|string|max:255',
@@ -77,6 +77,7 @@ class PostController extends Controller
         $post = Post::create([
             'title' => $request->title,
             'pic_uid' => $pic_uniqueid,
+            'catalog_id' => $catalog_id,
             'user_id' => $user_id
         ]);
         

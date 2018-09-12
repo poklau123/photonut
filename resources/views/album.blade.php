@@ -25,7 +25,29 @@
                 </div>
             </div>
             <div class="right col-md-9">
-                567
+                <div id="upload-container">
+                    <div class="card">
+                        <img class="card-img-top image">
+                        <div class="card-body">
+                            <div class="form-group">
+                                <input type="file" name="pic" accept="image/*" class="form-control-file pic">
+                            </div>
+                            <div class="form-group">
+                                <textarea name="title" class="form-control title" cols="30" rows="3"></textarea>
+                            </div>
+                            <a href="#" class="btn btn-outline-primary" id="upload"><i class="iconfont">&#xe65c;</i>发布</a>
+                        </div>
+                    </div>
+                </div>
+                <div id="post_container">
+                {{-- <div class="card post">
+                    <img class="card-img-top" src="https://www.runoob.com/wp-content/uploads/2014/06/kittens.jpg">
+                    <div class="card-body">
+                        <p class="card-text">小猫咪</p>
+                        <a href="#" class="btn btn-outline-danger float-md-right">删除</a>
+                    </div>
+                </div> --}}
+                </div>
             </div>
         </div>
     </div>
@@ -61,8 +83,14 @@
             </div>
         </div>
     </script>
-    <script>
-
+    <script type="text/template" id="post_view_tpl">
+        <div class="card post" data-id="">
+            <img class="card-img-top" src="">
+            <div class="card-body">
+              <p class="card-text title"></p>
+              <a href="#" class="btn btn-outline-danger float-md-right delete">删除</a>
+            </div>
+        </div>
     </script>
     <script src="{{ mix('js/album.js') }}"></script>
 @endsection
