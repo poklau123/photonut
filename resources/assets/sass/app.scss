@@ -9,6 +9,10 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+@import 'loading.scss';
+
+@import '~viewerjs/dist/viewer.css';
+
 .navbar-laravel {
   background-color: #43423F;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);

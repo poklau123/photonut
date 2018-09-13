@@ -131,6 +131,9 @@ class CatalogController extends Controller
         Auth::user()->catalogs()->where('sort', '>', $catalog->sort)->decrement('sort', 1);
         $catalog->delete();
 
+        $pic_uids = $catalog->posts()->get()->pluck('pic_uid')->all();
+        PostController::DeletePicStorage($pic_uids);
+
         return [];
     }
 }

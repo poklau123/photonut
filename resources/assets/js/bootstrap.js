@@ -24,6 +24,11 @@ window.axios = require('axios');
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
+require('./jquery.ajaxfileupload');
+
+require('viewerjs/dist/viewer.js');
+require('jquery-viewer/dist/jquery-viewer.js');
+
 /**
  * Next we will register the CSRF Token as a common header with Axios so that
  * all outgoing HTTP requests automatically have it attached. This is just

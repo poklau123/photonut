@@ -22,10 +22,11 @@ class PostController extends Controller
         $config_meta_compress_path = config('image.meta.compress_path');
         $config_meta_prefix = config('image.meta.prefix');
 
-        return Auth::user()->posts()->where('catalog_id', $catalog_id)->get()->map(function($item) use($config_meta_compress_path, $config_meta_save_path, $config_meta_format, $config_meta_prefix){
+        return Auth::user()->posts()->where('catalog_id', $catalog_id)->orderBy('updated_at', 'desc')->get()->map(function($item) use($config_meta_compress_path, $config_meta_save_path, $config_meta_format, $config_meta_prefix){
             $origin_url = asset('storage'.$config_meta_save_path.$item->pic_uid.'.'.$config_meta_format);
             $compress_url = asset('storage'.$config_meta_compress_path.$item->pic_uid.'.'.$config_meta_format);
             return [
+                'id' => $item->id,
                 'title' => $item->title,
                 'compress_url' => $compress_url,
                 'origin_url' => $origin_url,
@@ -124,17 +125,29 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Post $post)
+    public function destroy($catalog_id, Post $post)
     {
+        $pic_uniqueid = $post->pic_uid;
+        self::DeletePicStorage([$pic_uniqueid]);
+
+        $post->delete();
+        return [];
+    }
+
+    /**
+     * 删除图片存储
+     *
+     * @param array $pic_uids   图片uid数组
+     * @return void
+     */
+    public static function DeletePicStorage(array $pic_uids){
         $config_meta_format = config('image.meta.format');
         $config_meta_save_path = config('image.meta.save_path');
         $config_meta_compress_path = config('image.meta.compress_path');
         $config_meta_prefix = config('image.meta.prefix');
 
-        $pic_uniqueid = $post->pic_uid;
-        Storage::delete([$config_meta_save_path.$pic_uniqueid.'.'.$config_meta_format, $config_meta_compress_path.$pic_uniqueid.'.'.$config_meta_format]);
-
-        $post->delete();
-        return [];
+        foreach($pic_uids as $pic_uniqueid){
+            Storage::delete([$config_meta_save_path.$pic_uniqueid.'.'.$config_meta_format, $config_meta_compress_path.$pic_uniqueid.'.'.$config_meta_format]);
+        }
     }
 }

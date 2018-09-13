@@ -18,5 +18,9 @@
         "laravel-mix": "^2.0",
         "lodash": "^4.17.4",
         "vue": "^2.5.7"
+    },
+    "dependencies": {
+        "imageviewer": "^1.0.0",
+        "jquery-viewer": "^1.0.0"
     }
 }

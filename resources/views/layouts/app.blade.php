@@ -90,6 +90,16 @@
         <main class="py-4">
             @yield('content')
         </main>
+
+        <script type="text/template" id="loading_tpl">
+            <div class="loading">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </script>
     </div>
     <!-- Scripts -->
     <script src="{{ mix('js/app.js') }}"></script>

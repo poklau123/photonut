@@ -46,3 +46,20 @@ require('./bootstrap');
         }, 1000);
     }
 })();
+
+
+$.fn._loading = function(){
+    $(this)._unloading();
+    var loading_html = $($('#loading_tpl').html());
+    var container_height = $(this).height();
+    loading_html.css({height: container_height, 'padding-top': container_height / 2 - 35});
+
+    var zz = $('<div></div>').addClass('blur').css({height: container_height, position: 'absolute', top: 0, width: '100%', 'z-index': 1, 'background-color': '#f3f3f399'});
+    $(this).append(zz);
+    $(this).append(loading_html);
+}
+
+$.fn._unloading = function(){
+    $(this).find('.blur').remove();
+    $(this).find('div.loading').remove();
+}
