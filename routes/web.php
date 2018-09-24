@@ -38,6 +38,10 @@ Route::get('/album', function(){
     return view('album');
 });
 
+Route::get('/contact', function(){
+    return view('contact');
+});
+
 Route::get('test/{id}', function($id){
     Auth::loginUsingId($id);
     return redirect('/home');

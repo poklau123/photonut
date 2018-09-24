@@ -37,7 +37,7 @@
                         @else
                             <li class="nav-item"><a href="/album" class="nav-link">相册</a></li>
                             <li class="nav-item"><a href="javascript:void()" class="nav-link">模板</a></li>
-                            <li class="nav-item"><a href="javascript:void()" class="nav-link">联系</a></li>
+                            <li class="nav-item"><a href="/contact" class="nav-link">联系</a></li>
                         @endguest
                     </ul>
 

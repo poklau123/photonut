@@ -21,6 +21,7 @@
     },
     "dependencies": {
         "imageviewer": "^1.0.0",
-        "jquery-viewer": "^1.0.0"
+        "jquery-viewer": "^1.0.0",
+        "medium-editor": "^5.23.3"
     }
 }

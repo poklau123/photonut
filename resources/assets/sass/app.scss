@@ -13,6 +13,9 @@
 
 @import '~viewerjs/dist/viewer.css';
 
+@import '~medium-editor/dist/css/medium-editor.css';
+@import '~medium-editor/dist/css/themes/default.css';
+
 .navbar-laravel {
   background-color: #43423F;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
@@ -179,4 +182,9 @@
   .image{
     
   }
+}
+
+
+.medium-editor-hidden{
+  display: none;
 }
