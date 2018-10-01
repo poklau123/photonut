@@ -36,6 +36,12 @@ return [
         'save_format' => 'png',
         'width' => 100,
         'height' => 100
+    ],
+
+    'pic' => [
+        'save_path' => 'pic/',
+        'save_format' => 'png',
+        'prefix' => 'pic_',
     ]
 
 ];

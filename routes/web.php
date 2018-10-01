@@ -38,9 +38,8 @@ Route::get('/album', function(){
     return view('album');
 });
 
-Route::get('/contact', function(){
-    return view('contact');
-});
+Route::get('/contact', 'ContactController@edit')->middleware('auth');
+Route::post('/contact', 'ContactController@update')->middleware('auth');
 
 Route::get('test/{id}', function($id){
     Auth::loginUsingId($id);
