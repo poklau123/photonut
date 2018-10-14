@@ -1,0 +1,26 @@
+/*三角*/
+.arrow(@color: #fff; @pointer:up; @size: 8px){
+	width:0;
+    height:0;
+	.pointer(@pointer) when (@pointer = up){
+		border-bottom: @size solid @color;
+		border-right: @size solid transparent;
+		border-left: @size solid transparent;
+	}
+	.pointer(@pointer) when (@pointer = down){
+		border-top: @size solid @color;
+		border-right: @size solid transparent;
+		border-left: @size solid transparent;
+	}
+	.pointer(@pointer) when (@pointer = left){
+		border-top: @size solid transparent;
+		border-bottom: @size solid transparent;
+		border-right: @size solid @color;
+	}
+	.pointer(@pointer) when (@pointer = right){
+		border-top: @size solid transparent;
+		border-bottom: @size solid transparent;
+		border-left: @size solid @color;
+	}
+	.pointer(@pointer);
+}

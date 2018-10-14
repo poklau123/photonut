@@ -9,100 +9,89 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
+    <meta name="description" content="摄影首页">
+    <meta name="keywords" content="摄影首页">
+    <meta name="renderer" content="webkit">
+    <meta name="applicable-device" content="pc">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.7/jquery.fullpage.css">
+    <link rel="stylesheet" href="{{ mix('css/styles.css') }}">
 
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
-
-    <!-- Styles -->
-    <link href="{{ mix('css/app.css') }}" rel="stylesheet">
     @yield('style')
 </head>
 <body>
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
-            <div class="container">
-                <span class="navbar-brand" href="{{ url('/') }}"></span>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
-                        @guest
-                            <li class="nav-item"><a href="javascript:void()" class="nav-link">产品</a></li>
-                            <li class="nav-item"><a href="javascript:void()" class="nav-link">价格</a></li>
-                            <li class="nav-item"><a href="javascript:void()" class="nav-link">模板</a></li>
+    <!-- header -->
+	<header class="lt-header">
+        <div class="header-box fn-clear">
+            <a href="/" class="logo-box"><img class="logo" src="/images/default/logo.png" alt="" width="184" height="46"></a>
+            <ul class="header-nav fn-clear">
+                @guest
+                    <li>
+                        <a href="/">产品</a>
+                    </li>
+                    <li>
+                        <a href="/templates">模板</a>
+                    </li>
+                    <li>
+                        <a href="/price">价格</a>
+                    </li>
+                @else
+                    <li>
+                        <a href="/album">相册</a>
+                    </li>
+                    <li>
+                        <a href="javascript:void()">模板</a>
+                    </li>
+                    <li>
+                        <a href="/contact">联系</a>
+                    </li>
+                @endguest
+            </ul>
+            <div class="header-other">
+                @guest
+                    <a href="/login" class="other-btn">
+                        <span>登录</span>
+                    </a>
+                @else
+                    <a href="#" class="other-btn">
+                        <i class="icon-manage"></i><span>管理站点</span>
+                    </a>
+                    <span class="header-img-box">
+                        @if(Auth::user()->avatar)
+                        <img class="navbar-avatar" src="{{ asset('storage/'.config('image.avatar.save_path').Auth::user()->id.'.'.config('image.avatar.save_format')) }}" alt="{{ Auth::user()->name }}">
                         @else
-                            <li class="nav-item"><a href="/album" class="nav-link">相册</a></li>
-                            <li class="nav-item"><a href="javascript:void()" class="nav-link">模板</a></li>
-                            <li class="nav-item"><a href="/contact" class="nav-link">联系</a></li>
-                        @endguest
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">登录</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register') }}">注册</a>
-                            </li>
-                        @else
-                            <li class="nav-item site-view">
-                                <a href="#">
-                                    <i class="iconfont">&#xe6b4;</i>
-                                    预览站点
-                                </a>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    @if(Auth::user()->avatar)
-                                        <img class="navbar-avatar" src="{{ asset('storage/'.config('image.avatar.save_path').Auth::user()->id.'.'.config('image.avatar.save_format')) }}" alt="{{ Auth::user()->name }}">
-                                    @else
-                                        <span class="navbar-name-avatar">{{ substr(Auth::user()->name, -2) }}</span>
-                                    @endif
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a href="#" class="dropdown-item"><i class="iconfont">&#xe608;</i> 账号设置</a>
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        <i class="iconfont">&#xe650;</i> 退出登录
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
-                </div>
+                            <img height="30" width="30" src="../dest/img/user.png" alt=""><span class="name">Kami</span>
+                        @endif
+                    </span>
+                @endguest                
             </div>
-        </nav>
+        </div>
+    </header>
+    <!-- /header -->
 
-        <main class="py-4">
-            @yield('content')
-        </main>
+    @yield('content')
 
-        <script type="text/template" id="loading_tpl">
-            <div class="loading">
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </script>
-    </div>
+    <script type="text/template" id="loading_tpl">
+        <div class="loading">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </script>
     <!-- Scripts -->
-    <script src="{{ mix('js/app.js') }}"></script>
+	<script src="/js/jquery.min.js"></script>
     @yield('script')
+
+    <script>
+    (function(){
+        var pathname = window.location.pathname;
+        $('.header-nav li a').each(function(index, link){
+            if($(link).attr('href') == pathname){
+                $(link).parent().addClass('cur')
+            }
+        });
+    })()
+    </script>
 </body>
 </html>
