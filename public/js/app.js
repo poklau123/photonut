@@ -42494,7 +42494,7 @@ assign(Viewer.prototype, render, events, handlers, methods, others);
 /* 40 */
 /***/ (function(module, exports) {
 
-throw new Error("Module build failed: ModuleBuildError: Module build failed: \r\n\r\n    .logo-box{\r\n        .fn-left();\r\n      ^\r\n.fn-left is undefined\r\n      in E:\\projects\\photonut\\resources\\assets\\less\\layout.less (line 25, column 8)\n    at runLoaders (E:\\projects\\photonut\\node_modules\\webpack\\lib\\NormalModule.js:195:19)\n    at E:\\projects\\photonut\\node_modules\\loader-runner\\lib\\LoaderRunner.js:364:11\n    at E:\\projects\\photonut\\node_modules\\loader-runner\\lib\\LoaderRunner.js:230:18\n    at context.callback (E:\\projects\\photonut\\node_modules\\loader-runner\\lib\\LoaderRunner.js:111:13)\n    at <anonymous>\n    at runMicrotasksCallback (internal/process/next_tick.js:121:5)\n    at _combinedTickCallback (internal/process/next_tick.js:131:7)\n    at process._tickCallback (internal/process/next_tick.js:180:9)");
+// removed by extract-text-webpack-plugin
 
 /***/ }),
 /* 41 */

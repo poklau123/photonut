@@ -19,13 +19,12 @@ let mix = require('laravel-mix');
 
  mix.copy('resources/assets/js/jquery.min.js', 'public/js');
 
-// mix
-//     .js('resources/assets/js/app.js', 'public/js')
-//     .copy('resources/assets/js/album.js', 'public/js')
-//     .js('resources/assets/js/contact.js', 'public/js')
-//     .sass('resources/assets/sass/app.scss', 'public/css')
-//     .copy('resources/assets/images', 'public/images');
+ mix.sass('resources/assets/sass/app.scss', 'public/css');
 
+mix
+    .js('resources/assets/js/app.js', 'public/js')
+    .copy('resources/assets/js/album.js', 'public/js')
+    .js('resources/assets/js/contact.js', 'public/js');
 if (mix.config.inProduction) {
     mix.version();
 }
