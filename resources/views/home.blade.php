@@ -13,7 +13,7 @@
                         <p>就能拥有属于您自己的专业摄影网站，展示您的作品。</p>
                     </div>
                     <div class="tel-box">
-                        <input type="text" placeholder="请输入您的手机号" oninput="this.value = this.value.replace(/\D/g, '')" maxlength="11"><a href="/register" class="btn">马上开启</a>
+                        <input type="text" placeholder="请输入您的手机号" oninput="this.value = this.value.replace(/\D/g, '')" maxlength="11"><a href="javascript:void(0);" class="btn register">马上开启</a>
                     </div>
                 </div>
                 <a href="#page2" class="arrow"><i class="icon-arrow"></i></a>
@@ -63,7 +63,7 @@
             <div class="section page5" data-anchor="page5">
                 <p class="section-title">开始免费试用</p>
                 <div class="tel-box">
-                    <input type="text" placeholder="请输入您的手机号" oninput="this.value = this.value.replace(/\D/g, '')" maxlength="11"><a href="#" class="btn">马上开启</a>
+                    <input type="text" placeholder="请输入您的手机号" oninput="this.value = this.value.replace(/\D/g, '')" maxlength="11"><a href="#" class="btn register">马上开启</a>
                 </div>
             </div>
             <!-- /第五页 -->
@@ -88,6 +88,11 @@
                     $('.' + index + '-box').addClass('show');
                 }
             });
+        });
+
+        $('.register').click(function(){
+            var phone = $(this).siblings('input').val();
+            window.location.href="/register?phone="+phone;
         });
     </script>    
 @endsection

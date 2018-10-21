@@ -46,6 +46,10 @@ Route::get('/album', function(){
     return view('album');
 });
 
+Route::get('/template', function(){
+    return view('templates');
+});
+
 Route::get('/contact', 'ContactController@edit')->middleware('auth');
 Route::post('/contact', 'ContactController@update')->middleware('auth');
 

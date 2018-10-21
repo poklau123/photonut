@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.manage')
 
 @section('content')
 <div class="container">
@@ -66,4 +66,20 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('script')
+    <script>
+        (function(){
+            var search = window.location.search;
+            if(search.length > 0 && search.length % 2 === 0){
+                var arr = search.substr(1).split('=');
+                var obj = {};
+                for(var i = 0; i < arr.length; i+=2){
+                    obj[arr[i]] = arr[i+1];
+                }
+                $('#phone').val(obj.phone)
+            }
+        })();
+    </script>
 @endsection

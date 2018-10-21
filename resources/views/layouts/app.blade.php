@@ -29,7 +29,7 @@
                         <a href="/">产品</a>
                     </li>
                     <li>
-                        <a href="/templates">模板</a>
+                        <a href="/template">模板</a>
                     </li>
                     <li>
                         <a href="/price">价格</a>
@@ -39,7 +39,7 @@
                         <a href="/album">相册</a>
                     </li>
                     <li>
-                        <a href="javascript:void()">模板</a>
+                        <a href="/template">模板</a>
                     </li>
                     <li>
                         <a href="/contact">联系</a>
@@ -53,13 +53,13 @@
                     </a>
                 @else
                     <a href="#" class="other-btn">
-                        <i class="icon-manage"></i><span>管理站点</span>
+                        <i class="icon-manage"></i><span>预览站点</span>
                     </a>
                     <span class="header-img-box">
                         @if(Auth::user()->avatar)
                         <img class="navbar-avatar" src="{{ asset('storage/'.config('image.avatar.save_path').Auth::user()->id.'.'.config('image.avatar.save_format')) }}" alt="{{ Auth::user()->name }}">
                         @else
-                            <img height="30" width="30" src="../dest/img/user.png" alt=""><span class="name">Kami</span>
+                            <img height="30" width="30" src="/images/default/user.png" alt=""><span class="name">Kami</span>
                         @endif
                     </span>
                 @endguest                
@@ -69,16 +69,7 @@
     <!-- /header -->
 
     @yield('content')
-
-    <script type="text/template" id="loading_tpl">
-        <div class="loading">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-    </script>
+    
     <!-- Scripts -->
 	<script src="/js/jquery.min.js"></script>
     @yield('script')

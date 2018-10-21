@@ -30,7 +30,7 @@
                         <a href="/">产品</a>
                     </li>
                     <li>
-                        <a href="/templates">模板</a>
+                        <a href="/template">模板</a>
                     </li>
                     <li>
                         <a href="/price">价格</a>
@@ -40,7 +40,7 @@
                         <a href="/album">相册</a>
                     </li>
                     <li>
-                        <a href="javascript:void()">模板</a>
+                        <a href="/template">模板</a>
                     </li>
                     <li>
                         <a href="/contact">联系</a>
@@ -54,15 +54,29 @@
                     </a>
                 @else
                     <a href="#" class="other-btn">
-                        <i class="icon-manage"></i><span>管理站点</span>
+                        <i class="icon-manage"></i><span>预览站点</span>
                     </a>
-                    <span class="header-img-box">
+                    <a class="header-img-box" data-toggle="dropdown">
                         @if(Auth::user()->avatar)
                         <img class="navbar-avatar" src="{{ asset('storage/'.config('image.avatar.save_path').Auth::user()->id.'.'.config('image.avatar.save_format')) }}" alt="{{ Auth::user()->name }}">
                         @else
-                            <img height="30" width="30" src="../dest/img/user.png" alt=""><span class="name">Kami</span>
+                            <img height="30" width="30" src="/images/default/user.png" alt=""><span class="name">Kami</span>
+                            <span class="caret"></span>
                         @endif
-                    </span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#" class="dropdown-item"><i class="iconfont">&#xe608;</i> 个人设置</a></li>
+                        <li>
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
+                                            document.getElementById('logout-form').submit();">
+                                <i class="iconfont">&#xe650;</i> 退出登录
+                            </a>
+                        </li>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                    </ul>
                 @endguest                
             </div>
         </div>
